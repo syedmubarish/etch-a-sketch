@@ -1,6 +1,17 @@
 const container = document.querySelector(".container");
 const changeBtn = document.querySelector(".btn-container button")
 
+
+function generateRandomColors(){
+    const r = Math.floor(Math.random() * 256)
+    const g = Math.floor(Math.random() * 256)
+    const b = Math.floor(Math.random() * 256)
+    return `rgb(${r},${g},${b})`
+}
+
+
+
+
 function createSquareDivs(number) {
     for (let rows = 0; rows < number; rows++) {
         const row = document.createElement("div");
@@ -11,7 +22,9 @@ function createSquareDivs(number) {
             col.style.width = `${700 / number}px`
             col.style.height = `${700 / number}px`
             
-            //   col.textContent=cols
+            col.addEventListener("mouseover", () => {
+                col.style.backgroundColor = generateRandomColors();
+            });
             
             row.appendChild(col)
         }
@@ -23,16 +36,6 @@ function createSquareDivs(number) {
 createSquareDivs(16);
 
 
-function doPainting(){
-    const rows = Array.from(document.querySelectorAll(".row-div"))
-    for(const row of rows){
-        row.addEventListener("mouseover",(e)=>{
-            e.target.style.backgroundColor = "grey"
-        })
-    }
-}
-
-doPainting()
 
 changeBtn.addEventListener('click',()=>{
     
@@ -49,5 +52,5 @@ changeBtn.addEventListener('click',()=>{
         row.remove()
     }
     createSquareDivs(parsedGridSize)
-    doPainting()
+    
 })

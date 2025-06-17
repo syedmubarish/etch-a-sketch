@@ -25,6 +25,7 @@
     justify-content: center;
     width: 700px;
     margin: 10px auto;
+    gap: 10px;
 }
 
 .btn-container button{
