@@ -26,7 +26,7 @@ function createSquareDivs(number) {
             
             col.addEventListener("mouseover", () => {
                 col.dataset.interaction++
-                
+                col.style.opacity = col.dataset.interaction * 10 + "%"
                if(col.dataset.interaction<10){
 
                    col.style.backgroundColor = generateRandomColors();
