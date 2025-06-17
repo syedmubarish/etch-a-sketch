@@ -19,11 +19,25 @@ function createSquareDivs(number) {
         for (let cols = 0; cols < number; cols++) {
             const col = document.createElement("div");
             col.classList.add("col-div")
-            col.style.width = `${700 / number}px`
-            col.style.height = `${700 / number}px`
+            col.style.width = `${700 / number - 2}px`
+            col.style.height = `${700 / number - 2}px`
+
+            col.setAttribute("data-interaction",0)
             
             col.addEventListener("mouseover", () => {
-                col.style.backgroundColor = generateRandomColors();
+                col.dataset.interaction++
+                
+               if(col.dataset.interaction<10){
+
+                   col.style.backgroundColor = generateRandomColors();
+                }else{
+
+                    col.style.backgroundColor = "black";
+                }
+
+                
+                
+                
             });
             
             row.appendChild(col)
